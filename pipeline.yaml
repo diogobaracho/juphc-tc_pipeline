@@ -11,6 +11,7 @@ spec:
     - name: repo-url
     - name: branch
       default: main
+    - name: app-name
   tasks:
 
     - name: init
@@ -34,14 +35,6 @@ spec:
         value: $(params.branch)
       runAfter:
         - init
-    - name: npminstall
-      workspaces:
-        - name: source
-          workspace: pipeline-workspace
-      taskRef:
-        name: npm
-      runAfter:
-        - clone
     - name: tests
       workspaces:
         - name: source
@@ -49,7 +42,7 @@ spec:
       taskRef:
         name: jasmine
       runAfter:
-        - npminstall
+        - clone
     - name: build
       workspaces:
         - name: source

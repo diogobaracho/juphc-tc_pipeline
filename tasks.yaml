@@ -33,7 +33,6 @@ spec:
           rm -rf "${WORKSPACE_SOURCE_PATH}"/..?*
         fi
 ---
-
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -58,6 +57,7 @@ spec:
 
         echo "***** Running npm install *****"
         npm install
+
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Task
@@ -76,6 +76,3 @@ spec:
 
         echo "***** Running jasminetests *****"
         npx jasmine
-
----
-
